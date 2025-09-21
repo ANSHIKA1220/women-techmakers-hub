@@ -1,17 +1,18 @@
 import React, { useState, useRef, useEffect, useCallback } from 'react';
-import { Message, Role } from '../types';
 import { WELCOME_MESSAGE, SUGGESTION_CHIPS } from '../constants';
-import { sendMessageToAI } from '../services/geminiService';
+import { getBotResponse } from '../services/geminiService';
 import ChatMessage from './ChatMessage';
 import LoadingSpinner from './LoadingSpinner';
 import SuggestionChips from './SuggestionChips';
+// FIX: Import Role enum to fix type errors.
+import { Role } from '../types';
 
-const ChatInterface: React.FC = () => {
-  const [messages, setMessages] = useState<Message[]>([WELCOME_MESSAGE]);
-  const [userInput, setUserInput] = useState<string>('');
-  const [isLoading, setIsLoading] = useState<boolean>(false);
-  const [error, setError] = useState<string | null>(null);
-  const chatContainerRef = useRef<HTMLDivElement>(null);
+const ChatInterface = () => {
+  const [messages, setMessages] = useState([WELCOME_MESSAGE]);
+  const [userInput, setUserInput] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState(null);
+  const chatContainerRef = useRef(null);
 
   useEffect(() => {
     if (chatContainerRef.current) {
@@ -19,35 +20,38 @@ const ChatInterface: React.FC = () => {
     }
   }, [messages]);
 
-  const handleSubmit = useCallback(async (messageText: string) => {
+  const handleSubmit = useCallback(async (messageText) => {
     if (!messageText.trim() || isLoading) return;
 
-    const userMessage: Message = { role: Role.USER, text: messageText };
+    // FIX: Use Role enum for message role to match type definition.
+    const userMessage = { role: Role.USER, text: messageText };
     setMessages(prev => [...prev, userMessage]);
     setIsLoading(true);
     setError(null);
     setUserInput('');
 
     try {
-      const aiResponseText = await sendMessageToAI(messageText);
-      const aiMessage: Message = { role: Role.MODEL, text: aiResponseText };
+      const aiResponseText = await getBotResponse(messageText);
+      // FIX: Use Role enum for message role to match type definition.
+      const aiMessage = { role: Role.MODEL, text: aiResponseText };
       setMessages(prev => [...prev, aiMessage]);
     } catch (e) {
       const errorMessage = e instanceof Error ? e.message : 'An unexpected error occurred.';
       setError(errorMessage);
-      const errorResponseMessage: Message = { role: Role.MODEL, text: `Sorry, something went wrong: ${errorMessage}` };
+      // FIX: Use Role enum for message role to match type definition.
+      const errorResponseMessage = { role: Role.MODEL, text: `Sorry, something went wrong: ${errorMessage}` };
       setMessages(prev => [...prev, errorResponseMessage]);
     } finally {
       setIsLoading(false);
     }
   }, [isLoading]);
 
-  const handleFormSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleFormSubmit = (e) => {
     e.preventDefault();
     handleSubmit(userInput);
   };
   
-  const handleSuggestionClick = (suggestion: string) => {
+  const handleSuggestionClick = (suggestion) => {
       setUserInput(suggestion);
       handleSubmit(suggestion);
   };

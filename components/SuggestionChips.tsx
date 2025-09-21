@@ -1,11 +1,6 @@
 import React from 'react';
 
-interface SuggestionChipsProps {
-    chips: string[];
-    onChipClick: (suggestion: string) => void;
-}
-
-const SuggestionChips: React.FC<SuggestionChipsProps> = ({ chips, onChipClick }) => {
+const SuggestionChips = ({ chips, onChipClick }) => {
     return (
         <div className="p-4 flex flex-wrap gap-2 justify-center">
             {chips.map((chip, index) => (

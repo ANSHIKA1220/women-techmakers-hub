@@ -1,13 +1,8 @@
 import React from 'react';
-import { Message, Role } from '../types';
 import MarkdownRenderer from './MarkdownRenderer';
 
-interface ChatMessageProps {
-  message: Message;
-}
-
-const ChatMessage: React.FC<ChatMessageProps> = ({ message }) => {
-  const isUser = message.role === Role.USER;
+const ChatMessage = ({ message }) => {
+  const isUser = message.role === 'user';
 
   return (
     <div className={`flex items-start gap-3 ${isUser ? 'justify-end' : 'justify-start'}`}>

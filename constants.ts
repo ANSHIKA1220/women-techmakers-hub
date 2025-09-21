@@ -1,6 +1,27 @@
 import { Role } from './types';
 
-export const SYSTEM_PROMPT = `You are 'Athena', a helpful and encouraging AI assistant for 'FemmeForward', a resource hub for women in technology. Your purpose is to provide supportive and accurate information about upcoming events, scholarships, mentorship programs, and links to relevant news and safe discussion forums. Always be positive, empowering, and professional. When providing lists, use markdown bullet points. When providing links, ensure they are full, valid, and verifiable URLs formatted in markdown like [Title](URL). If you do not have a specific, real link for a resource, do not invent one. Instead, suggest ways the user can search for it, for example, 'You can search for 'women in tech mentorship programs' on your preferred search engine.' Keep responses concise and focused on the user's query.`;
+export const KNOWLEDGE_BASE = [
+    {
+        keywords: ['event', 'conference', 'meetup', 'webinar', 'workshop'],
+        response: "There are many great events for women in tech! I recommend checking out sites like the Grace Hopper Celebration, Women Who Code, and Tech Up for Women. Searching for 'women in tech conferences' on your favorite search engine is also a great way to find local and virtual events!"
+    },
+    {
+        keywords: ['scholarship', 'funding', 'financial aid', 'grant'],
+        response: "Absolutely! Many organizations offer scholarships to support women in tech. Look into programs from the Society of Women Engineers (SWE), Google's Women Techmakers Scholarship Program, and the AnitaB.org foundation. These can be great resources for funding your education or career development."
+    },
+    {
+        keywords: ['mentor', 'mentorship', 'guide', 'coach'],
+        response: "Finding a mentor is a fantastic step! Platforms like Rewriting the Code, Merit, and local 'Women in Tech' meetup groups are excellent places to connect with experienced professionals who can offer guidance and support."
+    },
+    {
+        keywords: ['forum', 'community', 'discussion', 'safe space'],
+        response: "Connecting with a community is so important. I recommend the 'r/womenintech' subreddit, the Elpha community, and various private groups on Facebook or LinkedIn. They provide safe spaces for discussion and support."
+    },
+    {
+        keywords: ['news', 'article', 'blog', 'resource'],
+        response: "Staying updated is key! Following publications like 'Women in Technology International (WITI)' and blogs from major tech companies focused on diversity and inclusion are great ways to get the latest news and articles."
+    },
+];
 
 export const SUGGESTION_CHIPS = [
     "Upcoming tech conferences",
@@ -10,7 +31,6 @@ export const SUGGESTION_CHIPS = [
 ];
 
 export const WELCOME_MESSAGE = {
-    // FIX: Used Role.MODEL to ensure the `role` property type matches the `Role` enum, resolving a type incompatibility with the `Message` interface.
     role: Role.MODEL,
     text: "Hello! I'm Athena, your AI guide to resources for women in tech. How can I help you today? You can ask me about events, scholarships, mentorship, or news."
 };

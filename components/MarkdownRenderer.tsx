@@ -1,11 +1,7 @@
 import React from 'react';
 
-interface MarkdownRendererProps {
-  content: string;
-}
-
-const MarkdownRenderer: React.FC<MarkdownRendererProps> = ({ content }) => {
-  const renderLine = (line: string) => {
+const MarkdownRenderer = ({ content }) => {
+  const renderLine = (line) => {
     // Escape HTML to prevent XSS, though we are only replacing specific patterns
     let processedLine = line
       .replace(/&/g, "&amp;")
@@ -25,8 +21,8 @@ const MarkdownRenderer: React.FC<MarkdownRendererProps> = ({ content }) => {
   };
 
   const lines = content.split('\n');
-  const elements: JSX.Element[] = [];
-  let currentListItems: JSX.Element[] = [];
+  const elements = [];
+  let currentListItems = [];
 
   const flushList = () => {
     if (currentListItems.length > 0) {
