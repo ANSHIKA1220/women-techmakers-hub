@@ -1,4 +1,3 @@
-<img width="1920" height="912" alt="image" src="https://github.com/user-attachments/assets/b1ac44bc-fa2d-4954-8b36-b4fe29beed13" /># FemmeForward AI
 
 FemmeForward AI is a chatbot designed to be a supportive resource hub for women in technology. It provides information on events, scholarships, mentorship opportunities, and community forums.
 
@@ -10,8 +9,8 @@ FemmeForward AI is a chatbot designed to be a supportive resource hub for women 
 
 ---
 
-!(<img width="1920" height="912" alt="image" src="https://github.com/user-attachments/assets/ff6eefb3-1ad6-44c5-abc0-63be676bbef4" />
-) <!-- It's a good idea to replace this with an actual screenshot of your app -->
+<img width="1920" height="912" alt="image" src="https://github.com/user-attachments/assets/ff6eefb3-1ad6-44c5-abc0-63be676bbef4" />
+<!-- It's a good idea to replace this with an actual screenshot of your app -->
 
 ## ✨ Features
 
