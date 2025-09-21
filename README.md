@@ -1,6 +1,3 @@
-
-FemmeForward AI is a chatbot designed to be a supportive resource hub for women in technology. It provides information on events, scholarships, mentorship opportunities, and community forums.
-
 # FemmeForward AI
 
 FemmeForward AI is a chatbot designed to be a supportive resource hub for women in technology. It provides information on events, scholarships, mentorship opportunities, and community forums.
